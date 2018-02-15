@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+    <head>
+        <!--    Set default Meta block content "partial/site/meta.html" that can be overwrittn by other templates    -->
+        {{ block "site/meta" . }} {{ partial "site/meta.html" . }} {{ end }}  
+
+        <!--  Set default Title block content "" that can be overwrittn by other templates    -->
+        <!-- .Title is a hugo variable defined by the MarkDown Frontmatter || custom var can be accessed with .Params.varName, also defined in frontmatter -->
+        <title>
+            {{ block "title" . }}
+                {{- with .Title }}{{ . }} | {{ end }}{{ .Site.Title -}}
+            {{ end }}
+        </title>
+
+        {{ if .RSSLink }}
+            <link href="{{ .RSSLink }}" title="{{ .Site.Title }}" type="application/rss+xml" rel="alternate">
+        {{ end }}
+
+        {{ block "site/styles" . }} {{ partial "site/styles.html" . }} {{ end }}
+
+    </head>
+    <body>
+
+        {{ block "header" . }} {{ partial "site/header.html" . }} {{ end }}
+
+        <main class="site-main" role="main">
+            <!--    Main block - defined in other template files EG single.html / list.html   -->
+            {{ block "main" . }}{{ end }}
+
+        </main>
+
+        {{ block "footer" . }} {{ partial "site/footer.html" . }} {{ end }}
+
+        {{ block "site/scripts" . }} {{ partial "site/scripts.html" . }} {{ end }}
+
+    </body>
+</html>
