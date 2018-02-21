@@ -16,3 +16,32 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
+  
+  - name: "event"
+    label: "Event"
+    folder: "content/events"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+      - { label: "Author", name: "author", widget: "string", default: 'Steve' }
+      - { label: "Start Time", name: "starttime", widget: "datetime" }
+      - { label: "End Time", name: "endtime", widget: "datetime" }
+      - { label: "Start Date", name: "startdate", widget: "date" }
+      - { label: "End Date", name: "enddate", widget: "date" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  
+  - name: "news"
+    label: "News"
+    folder: "content/news"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+      - { label: "Author", name: "author", widget: "string", default: 'Steve' }
+      - { label: "Start Time", name: "starttime", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }

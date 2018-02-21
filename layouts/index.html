@@ -31,10 +31,23 @@
 
       </div>
       <div>
-        <!-- Note that .Data.Pages is the equivalent of .Site.Pages on the homepage template. -->
         <h2>Tags</h2>
             <ul>
               {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
+                <li> {{ $key }} </li>
+                <ul>
+                    {{ range $taxonomy.Pages }}
+                    <li hugo-nav="{{ .RelPermalink}}"><a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> </li>
+                    {{ end }}
+                </ul>
+              {{ end }}
+            </ul>
+
+      </div>
+      <div>
+        <h2>Categories</h2>
+            <ul>
+              {{ range $key, $taxonomy := .Site.Taxonomies.categories }}
                 <li> {{ $key }} </li>
                 <ul>
                     {{ range $taxonomy.Pages }}

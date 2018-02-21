@@ -12,11 +12,9 @@
             {{ end }}
         </title>
 
-        {{ if .RSSLink }}
-            <link href="{{ .RSSLink }}" title="{{ .Site.Title }}" type="application/rss+xml" rel="alternate">
-        {{ end }}
-
         {{ block "site/styles" . }} {{ partial "site/styles.html" . }} {{ end }}
+
+        {{ block "site/hdr-scripts" . }} {{ partial "site/hdr-scripts.html" . }} {{ end }}
 
     </head>
     <body>
