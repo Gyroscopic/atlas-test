@@ -21,6 +21,8 @@
 
         {{ block "header" . }} {{ partial "site/header.html" . }} {{ end }}
 
+        {{ block "breadcrumbs" . }} {{ partial "site/breadcrumbs.html" . }} {{ end }}
+
         <main class="site-main" role="main">
             <!--    Main block - defined in other template files EG single.html / list.html   -->
             {{ block "main" . }}{{ end }}
