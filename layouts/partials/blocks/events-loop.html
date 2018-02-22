@@ -1,0 +1,8 @@
+    <div>
+        <!-- Note that .Data.Pages is the equivalent of .Site.Pages on the homepage template. -->
+        <h2>List of Events</h2> {{ range first 5 ( where .Data.Pages "Section" "events" ) }}
+        <ul>
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        </ul>
+        {{ end }}
+    </div>

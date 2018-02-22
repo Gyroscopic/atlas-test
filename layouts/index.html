@@ -1,55 +1,27 @@
 {{ define "main" }}
 <main aria-role="main">
-    <header class="homepage-header">
-        <h1>{{.Title}}</h1> {{ with .Params.subtitle }}
-        <span class="subtitle">{{.}}</span> {{ end }}
-    </header>
 
-    <div class="homepage-content">
-        <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
-        {{.Content}}
+    <div class="container">
+        <header class="homepage-header">
+            <h1>{{.Title}}</h1> {{ with .Params.subtitle }}
+            <span class="subtitle">{{.}}</span> {{ end }}
+        </header>
+
+        <div class="homepage-content">
+            <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
+            {{.Content}}
+        </div>
+
+        <div class="widgets">
+            {{ block "blocks/events-loop" . }} {{ partial "blocks/events-loop.html" . }} {{ end }}
+
+            {{ block "blocks/news-block" . }} {{ partial "blocks/news-block.html" . }} {{ end }}
+
+            {{ block "blocks/tags-loop" . }} {{ partial "blocks/tags-loop.html" . }} {{ end }}
+
+            {{ block "blocks/categories-loop" . }} {{ partial "blocks/categories-loop.html" . }} {{ end }}
+        </div>
     </div>
-    <div>
-        <!-- Note that .Data.Pages is the equivalent of .Site.Pages on the homepage template. -->
-        <h2>List of Events</h2> {{ range first 5 ( where .Data.Pages "Section" "events" ) }}
-        <ul>
-            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-        </ul>
-        {{ end }}
-    </div>
-    <div>
-        <!-- Note that .Data.Pages is the equivalent of .Site.Pages on the homepage template. -->
-        <h2>Latest News</h2> {{ range first 5 ( where .Data.Pages "Section" "news" ) }}
-        <ul>
-            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-        </ul>
-        {{ end }}
-    </div>
-    <div>
-        <h2>Tags</h2>
-        <ul>
-            {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
-            <li> {{ $key }} </li>
-            <ul>
-                {{ range $taxonomy.Pages }}
-                <li hugo-nav="{{ .RelPermalink}}"><a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> </li>
-                {{ end }}
-            </ul>
-            {{ end }}
-        </ul>
-    </div>
-    <div>
-        <h2>Categories</h2>
-        <ul>
-            {{ range $key, $taxonomy := .Site.Taxonomies.categories }}
-            <li> {{ $key }} </li>
-            <ul>
-                {{ range $taxonomy.Pages }}
-                <li hugo-nav="{{ .RelPermalink}}"><a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> </li>
-                {{ end }}
-            </ul>
-            {{ end }}
-        </ul>
-    </div>
+
 </main>
 {{ end }}

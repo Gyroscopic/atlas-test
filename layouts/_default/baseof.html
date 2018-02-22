@@ -17,7 +17,7 @@
         {{ block "site/hdr-scripts" . }} {{ partial "site/hdr-scripts.html" . }} {{ end }}
 
     </head>
-    <body>
+    <body class="{{ if .IsHome }}homepage{{ else }}{{ .Section }}{{ end }}-template {{ if .Type }}{{ .Type }}-type{{ end }}">
 
         {{ block "header" . }} {{ partial "site/header.html" . }} {{ end }}
 
