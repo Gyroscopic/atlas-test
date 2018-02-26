@@ -3,7 +3,6 @@ languageCode = "en-gb"
 title = "My New Website"
 buildDrafts = false
 
-disableKinds = ["RSS"]
 enableRobotsTXT = true
 disableAliases = true
 
