@@ -15,6 +15,8 @@ const onError = (err) => {
     console.log(err)
 }
 
+let suppressHugoErrors = false;
+
 // --
 
 gulp.task('server', ['build'], () => {
@@ -28,6 +30,7 @@ gulp.task('server:with-drafts', ['build-preview'], () => {
 });
 
 gulp.task('init-watch', () => {
+    suppressHugoErrors = true;
     browserSync.init({
         server: {
             baseDir: 'public'
@@ -47,17 +50,39 @@ gulp.task('build-preview', () => {
     runSequence(['sass', 'js', 'fonts', 'images', 'pub-delete'], 'hugo-preview')
 })
 
+
+
 gulp.task('hugo', (cb) => {
-    return spawn('hugo', { stdio: 'inherit' }).on('close', (code) => {
-        browserSync.reload()
-        cb()
+    let baseUrl = process.env.NODE_ENV === 'production' ? process.env.URL : process.env.DEPLOY_PRIME_URL;
+    let args = baseUrl ? ['-b', baseUrl] : [];
+
+    return spawn('hugo', args, { stdio: 'inherit' }).on('close', (code) => {
+        if (suppressHugoErrors || code === 0) {
+            browserSync.reload()
+            cb()
+        } else {
+            console.log('hugo command failed.');
+            cb('hugo command failed.');
+        }
     })
 })
 
+
+
 gulp.task('hugo-preview', (cb) => {
-    return spawn('hugo', ['--buildDrafts', '--buildFuture'], { stdio: 'inherit' }).on('close', (code) => {
-        browserSync.reload()
-        cb()
+    let args = ['--buildDrafts', '--buildFuture'];
+    if (process.env.DEPLOY_PRIME_URL) {
+        args.push('-b')
+        args.push(process.env.DEPLOY_PRIME_URL)
+    }
+    return spawn('hugo', args, { stdio: 'inherit' }).on('close', (code) => {
+        if (suppressHugoErrors || code === 0) {
+            browserSync.reload()
+            cb()
+        } else {
+            console.log('hugo command failed.');
+            cb('hugo command failed.');
+        }
     })
 })
 
