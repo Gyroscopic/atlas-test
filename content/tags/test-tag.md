@@ -1,5 +1,5 @@
 ---
-title: Test Tag
+name: Test tag
 date: 2018-02-26T16:36:00.738Z
 draft: false
 author: System
