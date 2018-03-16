@@ -1,3 +1,6 @@
+/**
+ * Colours
+ */
 /*! sanitize.css v5.0.0 | CC0 License | github.com/jonathantneal/sanitize.css */
 /* Document (https://html.spec.whatwg.org/multipage/semantics.html#semantics)
    ========================================================================== */
@@ -632,6 +635,31 @@ a {
   text-align: center;
   position: relative;
   z-index: 10; }
+
+.site-nav__menu {
+  margin: 0;
+  padding: 0; }
+  .site-nav__menu-item {
+    display: inline-block;
+    padding: 2px 10px;
+    border: 1px solid #4683EB;
+    background-color: #4683EB;
+    transition: border .2s ease 0s, background-color .2s ease 0s, box-shadow .2s ease 50ms, -webkit-box-shadow .2s ease 50ms; }
+    .site-nav__menu-item:not(:last-child) {
+      margin-right: 10px; }
+    .site-nav__menu-item a {
+      text-decoration: none;
+      color: #fff; }
+      .site-nav__menu-item a:hover {
+        color: #fff;
+        display: block;
+        -webkit-transform: scale(1.005);
+                transform: scale(1.005); }
+    .site-nav__menu-item:hover {
+      background-color: #1abc9c;
+      border: 1px solid #1abc9c;
+      -webkit-box-shadow: 0 9px 8px -8px rgba(0, 0, 0, 0.75);
+              box-shadow: 0 9px 8px -8px rgba(0, 0, 0, 0.75); }
 
 @media screen and (min-width: 768px) {
   .entries {

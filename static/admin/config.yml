@@ -10,14 +10,14 @@ collections:
   - name: "page"
     label: "Page"
     folder: "content"
-    create: true
+    create: true # Allow users to create new documents in this collection
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
-      - name: images
-        label: "Images"
+      - name: featured_images
+        label: "Featured Images"
         widget: list
         required: false
         fields:
