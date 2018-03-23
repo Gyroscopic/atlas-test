@@ -640,6 +640,7 @@ a {
   margin: 0;
   padding: 0; }
   .site-nav__menu-item {
+    cursor: pointer;
     display: inline-block;
     padding: 2px 10px;
     border: 1px solid #4683EB;
@@ -650,16 +651,20 @@ a {
     .site-nav__menu-item a {
       text-decoration: none;
       color: #fff; }
-      .site-nav__menu-item a:hover {
-        color: #fff;
-        display: block;
-        -webkit-transform: scale(1.005);
-                transform: scale(1.005); }
-    .site-nav__menu-item:hover {
+    .site-nav__menu-item:hover, .site-nav__menu-item.active {
       background-color: #1abc9c;
       border: 1px solid #1abc9c;
       -webkit-box-shadow: 0 9px 8px -8px rgba(0, 0, 0, 0.75);
               box-shadow: 0 9px 8px -8px rgba(0, 0, 0, 0.75); }
+      .site-nav__menu-item:hover a, .site-nav__menu-item.active a {
+        color: #fff;
+        display: block;
+        -webkit-transform: scale(1.005);
+                transform: scale(1.005); }
+    .site-nav__menu-item.active {
+      cursor: default; }
+      .site-nav__menu-item.active a {
+        cursor: default; }
 
 @media screen and (min-width: 768px) {
   .entries {
@@ -797,22 +802,29 @@ a {
       border-left-color: #4683EB; }
     .breadcrumbs .crumb a:hover {
       background-color: #1abc9c;
-      text-shadow: 1px 1px 2px black; }
+      text-shadow: 1px 1px 2px black;
+      padding: 0 5px 0 4px; }
       .breadcrumbs .crumb a:hover:before {
         border-color: #1abc9c;
         border-left-color: transparent; }
       .breadcrumbs .crumb a:hover:after {
         border-left-color: #1abc9c; }
+    .breadcrumbs .crumb:first-child a:hover {
+      padding: 0 5px 0 11px; }
     .breadcrumbs .crumb.active a {
       font-style: italic;
       color: yellow;
       text-shadow: 1px 1px 2px black;
+      cursor: default;
+      padding: 0 6px 0 3px;
       background-color: #148f77; }
       .breadcrumbs .crumb.active a:before {
         border-color: #148f77;
         border-left-color: transparent; }
       .breadcrumbs .crumb.active a:after {
         border-left-color: #148f77; }
+    .breadcrumbs .crumb.active:first-child a {
+      padding: 0 10px 0 6px; }
 
 .widgets {
   display: -webkit-box;

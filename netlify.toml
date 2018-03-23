@@ -1,6 +1,7 @@
 [build]
     command = "npm run build"
     publish = "public"
+    # functions = "" # AWS lambda functions folder - overrides Netlify settings, if set
 
 [build.environment]
     HUGO_VERSION = "0.35"

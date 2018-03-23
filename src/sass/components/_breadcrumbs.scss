@@ -78,6 +78,7 @@
             &:hover {
                 background-color: $brand2;
                 text-shadow: 1px 1px 2px black;
+                padding: 0 5px 0 4px;
 
                 &:before {
                     border-color: $brand2;
@@ -90,11 +91,19 @@
             
         }
 
+        &:first-child {
+            a:hover {
+                padding: 0 5px 0 11px;
+            }
+        }
+
         &.active {
             a {
                 font-style:italic;
                 color: $brand3;
                 text-shadow: 1px 1px 2px black;
+                cursor: default;
+                padding: 0 6px 0 3px;
 
                 background-color: $brand2-darken;
 
@@ -104,6 +113,13 @@
                 }
                 &:after {
                     border-left-color: $brand2-darken;
+                }
+            }
+
+
+            &:first-child {
+                a {
+                    padding: 0 10px 0 6px;
                 }
             }
         }

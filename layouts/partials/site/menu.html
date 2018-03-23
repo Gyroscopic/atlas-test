@@ -10,12 +10,12 @@
                 </a>
                 <ul class="site-nav__submenu">
                     {{ range .Children }}
-                    <li class="{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                    <li class="site-nav__menu-subitem{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
                         <a href="{{ .URL }}">{{ .Name }}</a>
                     {{ end }}
                 </ul>
         {{else}}
-            <li class="site-nav__menu-item">
+            <li class="site-nav__menu-item {{ if $currentPage.HasMenuCurrent "main" . }} active{{ end }}">
                 <a href="{{.URL}}">
                     {{ .Pre }}
                     <span>{{ .Name }}</span>

@@ -9,3 +9,8 @@
     });
   }
 </script>
+
+<!-- Example page conditional to load (in this case) the netlify identity script, only on the homepage... -->
+{{ if .IsHome }}
+    {{ partial "conditionals/netlify-identity.html" }}
+{{ end }}
